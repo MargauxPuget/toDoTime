@@ -1,4 +1,4 @@
-function Task() {
+function Task({ list }) {
   return (
     <li className="task">
       <h3>Sortir marcher</h3>
