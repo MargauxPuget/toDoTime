@@ -1,0 +1,17 @@
+.wrapper_list{
+
+  display: flex;
+  flex-direction: row;
+
+  & .cardItem{
+    border: 1px solid rgb(138, 214, 88);
+    margin: 0.2rem;
+    padding: 0.2rem;
+    width: 200px;
+
+    & h3{
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+  }
+}
