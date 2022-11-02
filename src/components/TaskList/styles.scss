@@ -5,14 +5,146 @@
   flex-wrap: wrap;
 
   & .task{
-    border: 1px solid rgb(138, 214, 88);
+    border: 1px solid rgb(143, 48, 48);
     margin: 0.2rem;
     padding: 0.2rem;
     width: 32%;
+
+    &--done{
+      border: 1px solid rgb(138, 214, 88);
+    }
 
     & h3{
       font-weight: 500;
       font-size: 1.1rem;
     }
+
+
+    // Pour le bouton dynamique
+    & .task_buton {
+      padding: 0.5em calc(#{0.5em} * 1.2);
+      display: inline-block;
+      border: 2px solid transparent;
+      position: relative;
+      cursor: pointer;
+      letter-spacing: 0.07em;
+  
+      .task_buton_text {
+        // padding: 0 0.3em;
+        transform: translate3d(0,0.5em,0);
+        display: block;
+        transition: transform 0.4s cubic-bezier(.2,0,0,1) 0.4s;
+      }
+  
+      &:after {
+        position: absolute;
+        content: '';
+        bottom: -2px;
+        left: calc(#{0.5em} * 1.2);
+        right: calc(#{0.5em} * 1.2);
+        height: 2px;
+        background: rgb(138, 214, 88);
+        // z-index: -1;
+        transition: 
+          transform 0.8s cubic-bezier(1,0,.37,1) 0.2s,
+          right 0.2s cubic-bezier(.04,.48,0,1) 0.6s,
+          left 0.4s cubic-bezier(.04,.48,0,1) 0.6s;
+        transform-origin: left;
+      }
+
+    }
+  
+    // Pour le bouton dynamique
+    .line {
+      position: absolute;
+      background: rgb(138, 214, 88);
+  
+      &.-right,
+      &.-left {
+        width: 2px;
+        bottom: -2px;
+        top: -2px;
+        transform: scale3d(1,0,1);
+      }  
+  
+      &.-top,
+      &.-bottom {
+        height: 2px;
+        left: -2px;
+        right: -2px;
+        transform: scale3d(0,1,1);
+      }
+  
+      &.-right {
+        right: -2px;
+        transition: transform 0.1s cubic-bezier(1,0,.65,1.01) 0.23s;
+        transform-origin: top;
+      }
+  
+      &.-top {
+        top: -2px;
+        transition: transform 0.08s linear 0.43s;
+        transform-origin: left;
+      }
+  
+      &.-left {
+        left: -2px;
+        transition: transform 0.08s linear 0.51s;
+        transform-origin: bottom;
+      }
+  
+      &.-bottom {
+        bottom: -2px;
+        transition: transform 0.3s cubic-bezier(1,0,.65,1.01);
+        transform-origin: right;
+      }  
+    }
+  
+    // Pour le bouton dynamique
+    .task_buton:hover,
+    .task_buton:active {
+  
+      .task_buton_text {
+        transform: translate3d(0,0,0);
+        transition: transform 0.6s cubic-bezier(.2,0,0,1) 0.4s;
+      }
+  
+      &:after {
+        transform: scale3d(0,1,1);
+        right: -2px;
+        left: -2px;
+        transform-origin: right;
+        transition: 
+          transform 0.2s cubic-bezier(1,0,.65,1.01) 0.17s,
+          right 0.2s cubic-bezier(1,0,.65,1.01),
+          left 0s 0.3s;
+      }
+  
+      .line {
+        transform: scale3d(1,1,1);
+  
+        &.-right {
+          transition: transform 0.1s cubic-bezier(1,0,.65,1.01) 0.2s;
+          transform-origin: bottom;
+        }
+  
+        &.-top {
+          transition: transform 0.08s linear 0.4s;
+          transform-origin: right;
+        }
+  
+        &.-left {
+          transition: transform 0.08s linear 0.48s;
+          transform-origin: top;
+        }
+  
+        &.-bottom {
+          transition: transform 0.5s cubic-bezier(0,.53,.29,1) 0.56s;
+          transform-origin: left;
+        }
+      }
+  
+    }
+    
   }
 }
