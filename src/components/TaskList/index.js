@@ -5,7 +5,15 @@ import './styles.scss';
 import Task from 'src/components/TaskList/Task';
 
 function TaskList({ list }) {
-  const arrayOfJSXelements = list.map((item) => <Task />);
+  const arrayOfJSXelements = list.map((item) => (
+    <Task
+      key={item.id}
+      label={item.label}
+      time={item.time}
+      description={item.description}
+      done={item.done}
+    />
+  ));
 
   return (
     <ul className="wrapper_list">
