@@ -25,8 +25,8 @@ function Task({
       <p className="task_description">{description}</p>
       {!done
       && (
-        <div className="task_buton">
-          <span className="task_buton_text">Démarrer !</span>
+        <div className="task_button">
+          <span className="task_button_text">Démarrer !</span>
           <span className="line -right" />
           <span className="line -top" />
           <span className="line -left" />
