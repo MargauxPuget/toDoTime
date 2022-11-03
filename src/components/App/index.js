@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="app">
       <Form />
-      <Counter />
+      <Counter list={dataTasksList} />
       <TaskList list={dataTasksList} />
 
     </div>

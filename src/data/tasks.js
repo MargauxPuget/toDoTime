@@ -27,4 +27,11 @@ export default [
     description: 'Toutes les 2 semaines',
     done: false,
   },
+  {
+    id: 8,
+    label: 'Prevoir nos prochaine vacance',
+    time: 20654, // un temps en seconde
+    description: 'Toutes les 3 mois',
+    done: false,
+  },
 ];
