@@ -17,6 +17,14 @@ class App extends React.Component {
       taskList: dataTasksList,
       newTaskLabel: 'tt',
     };
+
+    this.changeLabel = this.changeLabel.bind(this);
+  }
+
+  changeLabel(newValue) {
+    this.setState({
+      newTaskLabel: newValue,
+    });
   }
 
   render() {
@@ -24,10 +32,9 @@ class App extends React.Component {
 
     return (
       <div className="app">
-        <Form value={newTaskLabel} />
+        <Form value={newTaskLabel} changeLabel={this.changeLabel} />
         <Counter list={taskList} />
         <TaskList list={taskList} />
-
       </div>
     );
   }
