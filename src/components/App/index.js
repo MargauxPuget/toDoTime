@@ -15,10 +15,14 @@ class App extends React.Component {
     // le state du component app
     this.state = {
       taskList: dataTasksList,
-      newTaskLabel: 'tt',
+      newTaskLabel: '',
+      newTaskHours: '',
+      newTaskMinutes: '',
     };
 
     this.changeLabel = this.changeLabel.bind(this);
+    this.changeHours = this.changeHours.bind(this);
+    this.changeMinutes = this.changeMinutes.bind(this);
   }
 
   changeLabel(newValue) {
@@ -27,12 +31,36 @@ class App extends React.Component {
     });
   }
 
+  changeHours(newValue) {
+    this.setState({
+      newTaskHours: newValue,
+    });
+  }
+
+  changeMinutes(newValue) {
+    this.setState({
+      newTaskMinutes: newValue,
+    });
+  }
+
   render() {
-    const { taskList, newTaskLabel } = this.state;
+    const {
+      taskList,
+      newTaskLabel,
+      newTaskHours,
+      newTaskMinutes,
+    } = this.state;
 
     return (
       <div className="app">
-        <Form value={newTaskLabel} changeLabel={this.changeLabel} />
+        <Form
+          label={newTaskLabel}
+          hours={newTaskHours}
+          minutes={newTaskMinutes}
+          changeLabel={this.changeLabel}
+          changeHours={this.changeHours}
+          changeMinutes={this.changeMinutes}
+        />
         <Counter list={taskList} />
         <TaskList list={taskList} />
       </div>

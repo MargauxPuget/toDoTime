@@ -4,16 +4,35 @@ import PropTypes from 'prop-types';
 
 import './styles.scss';
 
-function Form({ value, changeLabel }) {
+function Form({
+  label,
+  hours,
+  minutes,
+  changeLabel,
+  changeHours,
+  changeMinutes,
+}) {
   function handleSubmit(event) {
     event.preventDefault();
     console.log('Je veux ajouter une tache !!');
   }
 
-  function handleChange(event) {
+  function handleChangeLabel(event) {
     const newValue = event.target.value;
     changeLabel(newValue);
-    console.log('on change la valeur à : ', newValue);
+    console.log('on change la valeur du label : ', newValue);
+  }
+
+  function handleChangeHours(event) {
+    const newValue = event.target.value;
+    changeHours(newValue);
+    console.log('on change la valeur à des heures: ', newValue);
+  }
+
+  function handleChangeMinutes(event) {
+    const newValue = event.target.value;
+    changeMinutes(newValue);
+    console.log('on change la valeur à des minutes: ', newValue);
   }
 
   return (
@@ -22,17 +41,17 @@ function Form({ value, changeLabel }) {
       <form className="form" onSubmit={handleSubmit}>
         <label className="form_value">
           Nouvelle tache :
-          <input type="text" name="value" placeholder="Ajouter une tâche" value={value} onChange={handleChange} />
+          <input type="text" name="value" placeholder="Ajouter une tâche" value={label} onChange={handleChangeLabel} />
         </label>
 
         <label className="form_hours">
           Heures :
-          <input type="number" name="hours" />
+          <input type="number" name="hours" value={hours} onChange={handleChangeHours} />
         </label>
 
         <label className="form_minutes">
           Minutes :
-          <input type="number" name="minutes" />
+          <input type="number" name="minutes" value={minutes} onChange={handleChangeMinutes} />
         </label>
 
         <button className="form_button" type="button" onClick={handleSubmit}>Création</button>
@@ -42,8 +61,12 @@ function Form({ value, changeLabel }) {
 }
 
 Form.propTypes = {
-  value: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  hours: PropTypes.number.isRequired,
+  minutes: PropTypes.number.isRequired,
   changeLabel: PropTypes.func.isRequired,
+  changeHours: PropTypes.func.isRequired,
+  changeMinutes: PropTypes.func.isRequired,
 };
 
 export default Form;
