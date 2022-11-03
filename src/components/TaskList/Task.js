@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import React from 'react';
 
 function Task({
   label,
@@ -10,13 +11,8 @@ function Task({
   const heures = Math.trunc(time / 3600);
   const minutes = Math.trunc((time - (heures * 3600)) / 60);
   const secondes = Math.trunc(time % 60);
-  // let checkboxClass = 'list-item ';
-  // if (done) {
-  //   checkboxClass = 'list-item list-item--done';
-  // }
-  // version ternaire
-  // let checkboxClass = done ? ' list-item list-item--done' : ' list-item';
-  // on peut directement placer la ternaire dans le JSX entre accolades
+
+  console.log('le composant est rendu !');
 
   return (
     <li className={done ? ' task task--done' : ' task'}>
@@ -45,4 +41,4 @@ Task.propTypes = {
   done: PropTypes.bool.isRequired,
 };
 
-export default Task;
+export default React.memo(Task);
