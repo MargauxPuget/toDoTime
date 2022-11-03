@@ -7,7 +7,7 @@ function Task({
   done,
 }) {
   // traduction du time en seconde -> en heures, minutes et secondes.
-  const heures = Math.trunc(time / 60);
+  const heures = Math.trunc(time / 3600);
   const minutes = Math.trunc((time - (heures * 3600)) / 60);
   const secondes = Math.trunc(time % 60);
   // let checkboxClass = 'list-item ';
@@ -20,13 +20,13 @@ function Task({
 
   return (
     <li className={done ? ' task task--done' : ' task'}>
-      <h3>{label}</h3>
-      <p>en {heures}heures, {minutes}minutes et {secondes} secondes</p>
-      {description}
+      <h3 className="task_title">{label}</h3>
+      <p className="task_time">{heures}heures<br />{minutes}minutes<br />{secondes} secondes</p>
+      <p className="task_description">{description}</p>
       {!done
       && (
         <div className="task_buton">
-          <span className="task_buton_text">Fini !</span>
+          <span className="task_buton_text">Démarrer !</span>
           <span className="line -right" />
           <span className="line -top" />
           <span className="line -left" />

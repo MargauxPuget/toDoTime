@@ -14,11 +14,15 @@
       border: 1px solid rgb(138, 214, 88);
     }
 
-    & h3{
+    & .task_title{
       font-weight: 500;
       font-size: 1.1rem;
     }
 
+    & .task_time{
+      margin: 0.2rem 0;
+      color: rgb(48, 40, 40);
+    }
 
     // Pour le bouton dynamique
     & .task_buton {
