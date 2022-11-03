@@ -20,7 +20,7 @@ function Counter({ list }) {
 }
 
 Counter.propTypes = {
-  list: PropTypes.arrayOf().isRequired,
+  list: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 
 export default Counter;
