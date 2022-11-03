@@ -11,28 +11,29 @@ function Form({
   changeLabel,
   changeHours,
   changeMinutes,
+  addNewTask,
 }) {
   function handleSubmit(event) {
     event.preventDefault();
-    console.log('Je veux ajouter une tache !!');
+    addNewTask();
   }
 
   function handleChangeLabel(event) {
     const newValue = event.target.value;
     changeLabel(newValue);
-    console.log('on change la valeur du label : ', newValue);
+    // console.log('on change la valeur du label : ', newValue);
   }
 
   function handleChangeHours(event) {
     const newValue = event.target.value;
     changeHours(newValue);
-    console.log('on change la valeur à des heures: ', newValue);
+    // console.log('on change la valeur à des heures: ', newValue);
   }
 
   function handleChangeMinutes(event) {
     const newValue = event.target.value;
     changeMinutes(newValue);
-    console.log('on change la valeur à des minutes: ', newValue);
+    // console.log('on change la valeur à des minutes: ', newValue);
   }
 
   return (
@@ -62,11 +63,12 @@ function Form({
 
 Form.propTypes = {
   label: PropTypes.string.isRequired,
-  hours: PropTypes.number.isRequired,
-  minutes: PropTypes.number.isRequired,
+  hours: PropTypes.string.isRequired, // le nombre doit etre coverti en string car l'éditeur attend un string
+  minutes: PropTypes.string.isRequired, // le nombre doit etre coverti en string car l'éditeur attend un string
   changeLabel: PropTypes.func.isRequired,
   changeHours: PropTypes.func.isRequired,
   changeMinutes: PropTypes.func.isRequired,
+  addNewTask: PropTypes.func.isRequired,
 };
 
 export default Form;
