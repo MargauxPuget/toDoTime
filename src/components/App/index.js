@@ -15,15 +15,16 @@ class App extends React.Component {
     // le state du component app
     this.state = {
       taskList: dataTasksList,
+      newTaskLabel: 'tt',
     };
   }
 
   render() {
-    const { taskList } = this.state;
+    const { taskList, newTaskLabel } = this.state;
 
     return (
       <div className="app">
-        <Form />
+        <Form value={newTaskLabel} />
         <Counter list={taskList} />
         <TaskList list={taskList} />
 
