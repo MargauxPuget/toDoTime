@@ -8,8 +8,13 @@ import TaskList from 'src/components/TaskList';
 
 import dataTasksList from 'src/data/tasks';
 
+//  un compsant est re rend u si :
+// - ses props on changé (ici App n'a pas de props)
+// - son state est modifié
+// - son parent est re rendu (ici App n'a pas de parent)
+
 // == Composant
-class App extends React.Component {
+class App extends React.PureComponent {
   constructor(props) {
     super(props);
     // le state du component app
@@ -59,12 +64,21 @@ class App extends React.Component {
       done: false,
     };
 
-    // recuperer la liste existante dans le state et ajouter ce nouvel objet task
-    taskList.push(newTask);
+    // recuperer la liste existante dans le state et faire une copie de cette liste
+    // avec le spread operator on deveerse le contenu de taskList dans un NOUVEAU tableau
+    // ce nouveau tableau ne sera pas le même donc shouldComponentUpdate declanchera un rendu
+    const newTaskList = [...taskList];
+
+    //  puis faire un push sur la copie de cette liste
+    newTaskList.push(newTask);
 
     // faire un setState avec cette liste des taches mise à jour
     this.setState({
-      taskList: taskList,
+      taskList: newTaskList,
+      // on en profite pour vider la valeur du label
+      newTaskLabel: '',
+      newTaskHours: '',
+      newTaskMinutes: '',
     });
   }
 

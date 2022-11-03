@@ -12,7 +12,7 @@ function Task({
   const minutes = Math.trunc((time - (heures * 3600)) / 60);
   const secondes = Math.trunc(time % 60);
 
-  console.log('le composant est rendu !');
+  // console.log('le composant est rendu !');
 
   return (
     <li className={done ? ' task task--done' : ' task'}>
