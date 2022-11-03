@@ -1,6 +1,8 @@
 .wrapper_form{
   border: 1px solid black;
-  margin: 1.5rem 1rem 1rem;
+  border-radius: 10px;
+  margin: 1.5rem auto 1rem;
+  width: 50%;
 
   & h2{
     color: rgb(138, 214, 88);
@@ -11,8 +13,29 @@
     text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em black;
   }
 
-  & form{
+  & .form{
     margin-bottom: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.5rem;
+
+    & input{
+      @media (min-width: 500px) {
+        margin-left: 0.5rem;
+      }
+    }
+
+    &_button{
+      align-self: center;
+      padding: 0.2rem 2rem;
+      background-color: rgb(138, 214, 88);
+      border: none;
+      border-radius: 3px;
+      box-shadow: 0.3rem 0.3rem .4em rgb(39, 56, 28);
+    }
+
   }
 }
 

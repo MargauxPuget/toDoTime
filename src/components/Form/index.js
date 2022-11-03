@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 // == Import
 import PropTypes from 'prop-types';
 
@@ -19,9 +20,22 @@ function Form({ value, changeLabel }) {
     <div className="wrapper_form">
       <h2> Ajouter une tâche et un temps</h2>
       <form className="form" onSubmit={handleSubmit}>
-        <input type="text" className="form_item" placeholder="Ajouter une tâche" value={value} onChange={handleChange} />
-        <input type="time" className="form_item" />
-        <button type="button" onClick={handleSubmit} className="form_button">Création</button>
+        <label className="form_value">
+          Nouvelle tache :
+          <input type="text" name="value" placeholder="Ajouter une tâche" value={value} onChange={handleChange} />
+        </label>
+
+        <label className="form_hours">
+          Heures :
+          <input type="number" name="hours" />
+        </label>
+
+        <label className="form_minutes">
+          Minutes :
+          <input type="number" name="minutes" />
+        </label>
+
+        <button className="form_button" type="button" onClick={handleSubmit}>Création</button>
       </form>
     </div>
   );
