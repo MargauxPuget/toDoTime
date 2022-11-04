@@ -38,13 +38,22 @@ function Task({
         </div>
       )}
       {!done && taskWIP && (
-        <div className="box">
-          <svg>
-            <circle cx="50px" cy="50px" r="50px" />
-            <circle cx="50px" cy="50px" r="50px" />
-          </svg>
-          <span className="pourcent">75%</span>
-        </div>
+        <>
+          <div className="box">
+            <svg>
+              <circle cx="50px" cy="50px" r="50px" />
+              <circle cx="50px" cy="50px" r="50px" />
+            </svg>
+            <span className="pourcent">75%</span>
+          </div>
+          <div className="task_button">
+            <span className="task_button_text" onClick={handleClick}>STOP !</span>
+            <span className="line -right" />
+            <span className="line -top" />
+            <span className="line -left" />
+            <span className="line -bottom" />
+          </div>
+        </>
       )}
     </li>
   );

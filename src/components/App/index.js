@@ -108,6 +108,7 @@ class App extends React.PureComponent {
     console.log('recup', task);
 
     // on modifie l'element en question (création d'un toggle)
+    // todo attention manque d'une mise à jours des temps qui ont changés.
     task.taskWIP = !task.taskWIP;
     console.log('recup', task);
 
