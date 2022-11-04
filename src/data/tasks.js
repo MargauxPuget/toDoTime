@@ -5,6 +5,7 @@ export default [
     time: 1000, // un temps en seconde
     description: "bar de progression (pê en forme d'horloge)" /* TODO :  video a voir 'https://www.youtube.com/watch?v=MdKvSJOWm_U' */,
     done: true,
+    taskWIP: false,
   },
   {
     id: 13,
@@ -12,6 +13,7 @@ export default [
     time: 12318, // un temps en seconde
     description: "bar de progression (pê en forme d'horloge)",
     done: true,
+    taskWIP: false,
   },
   {
     id: 4,
@@ -19,6 +21,7 @@ export default [
     time: 900, // un temps en seconde
     description: "bar de progression (pê en forme d'horloge)",
     done: false,
+    taskWIP: false,
   },
   {
     id: 8,
@@ -26,6 +29,7 @@ export default [
     time: 600, // un temps en seconde
     description: 'Toutes les 2 semaines',
     done: false,
+    taskWIP: false,
   },
   {
     id: 10,
@@ -33,5 +37,6 @@ export default [
     time: 20654, // un temps en seconde
     description: 'Toutes les 3 mois',
     done: false,
+    taskWIP: false,
   },
 ];

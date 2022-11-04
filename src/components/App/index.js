@@ -1,7 +1,7 @@
 // == Import
 import React from 'react';
 
-import './styles.css';
+import './styles.scss';
 import Form from 'src/components/Form';
 import Counter from 'src/components/Counter';
 import TaskList from 'src/components/TaskList';
@@ -29,6 +29,7 @@ class App extends React.PureComponent {
     this.changeHours = this.changeHours.bind(this);
     this.changeMinutes = this.changeMinutes.bind(this);
     this.addNewTask = this.addNewTask.bind(this);
+    this.changeTaskWIP = this.changeTaskWIP.bind(this);
   }
 
   addNewTask() {
@@ -100,6 +101,27 @@ class App extends React.PureComponent {
     });
   }
 
+  changeTaskWIP(id) {
+    // on trouve element à changer
+    const { taskList } = this.state;
+    const task = taskList.find((item) => item.id === id);
+    console.log('recup', task);
+
+    // on modifie l'element en question (création d'un toggle)
+    task.taskWIP = !task.taskWIP;
+    console.log('recup', task);
+
+    // on supprime notre ancien objet, ou plutot on selectionne tous les autres
+    let newTaskList = taskList.filter((item) => item.id !== id);
+
+    // on remet l'element modifier dans notre tableau
+    newTaskList.push(task);
+
+    this.setState({
+      taskList: newTaskList,
+    });
+  }
+
   render() {
     const {
       taskList,
@@ -120,7 +142,7 @@ class App extends React.PureComponent {
           addNewTask={this.addNewTask}
         />
         <Counter list={taskList} />
-        <TaskList list={taskList} />
+        <TaskList list={taskList} changeTaskWIP={this.changeTaskWIP} />
       </div>
     );
   }
