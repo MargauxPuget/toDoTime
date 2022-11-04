@@ -14,6 +14,10 @@ function Task({
 
   // console.log('le composant est rendu !');
 
+  function handleClick() {
+    console.log('il faudrait démarrer le chrono !');
+  }
+
   return (
     <li className={done ? ' task task--done' : ' task'}>
       <h3 className="task_title">{label}</h3>
@@ -22,7 +26,7 @@ function Task({
       {!done
       && (
         <div className="task_button">
-          <span className="task_button_text">Démarrer !</span>
+          <span className="task_button_text" onClick={handleClick}>Démarrer !</span>
           <span className="line -right" />
           <span className="line -top" />
           <span className="line -left" />
