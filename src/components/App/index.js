@@ -113,7 +113,7 @@ class App extends React.PureComponent {
     console.log('recup', task);
 
     // on supprime notre ancien objet, ou plutot on selectionne tous les autres
-    let newTaskList = taskList.filter((item) => item.id !== id);
+    const newTaskList = taskList.filter((item) => item.id !== id);
 
     // on remet l'element modifier dans notre tableau
     newTaskList.push(task);

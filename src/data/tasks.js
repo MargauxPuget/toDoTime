@@ -4,7 +4,7 @@ export default [
     label: 'Sortir marcher',
     time: 1000, // un temps en seconde
     description: "bar de progression (pê en forme d'horloge)" /* TODO :  video a voir 'https://www.youtube.com/watch?v=MdKvSJOWm_U' */,
-    done: true,
+    done: false,
     taskWIP: false,
   },
   {
@@ -12,7 +12,7 @@ export default [
     label: 'Coder !!!',
     time: 12318, // un temps en seconde
     description: "bar de progression (pê en forme d'horloge)",
-    done: true,
+    done: false,
     taskWIP: false,
   },
   {
@@ -20,7 +20,7 @@ export default [
     label: 'Payer Nounou',
     time: 900, // un temps en seconde
     description: "bar de progression (pê en forme d'horloge)",
-    done: false,
+    done: true,
     taskWIP: false,
   },
   {
@@ -28,7 +28,7 @@ export default [
     label: 'Prévoir un resto',
     time: 600, // un temps en seconde
     description: 'Toutes les 2 semaines',
-    done: false,
+    done: true,
     taskWIP: false,
   },
   {
