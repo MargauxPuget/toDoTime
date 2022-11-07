@@ -9,6 +9,7 @@ function Task({
   done,
   taskWIP,
   changeTaskWIP,
+  chrono,
 }) {
   // traduction du time en seconde -> en heures, minutes et secondes.
   const heures = Math.trunc(time / 3600);
@@ -18,7 +19,14 @@ function Task({
   // console.log('le composant est rendu !');
 
   function handleClick() {
-    console.log('il faudrait démarrer le chrono pour :', id);
+    console.log('il faudrait démarrer le chrono pour :', id, time);
+
+    // démarrage du compte a rebourre
+    //chrono(id);
+    
+
+    // modification du status de la tache
+    // pour affichage du timer
     changeTaskWIP(id);
     console.log('taskWIP', taskWIP);
   }
@@ -44,10 +52,10 @@ function Task({
               <circle cx="50px" cy="50px" r="50px" />
               <circle cx="50px" cy="50px" r="50px" />
             </svg>
-            <span className="pourcent">75%</span>
+            <span className="chrono">75%</span>
           </div>
           <div className="task_button">
-            <span className="task_button_text" onClick={handleClick}>STOP !</span>
+            <span className="task_button_text" onClick={handleClick}>Pause</span>
             <span className="line -right" />
             <span className="line -top" />
             <span className="line -left" />
@@ -67,6 +75,7 @@ Task.propTypes = {
   done: PropTypes.bool.isRequired,
   taskWIP: PropTypes.bool.isRequired,
   changeTaskWIP: PropTypes.func.isRequired,
+  chrono: PropTypes.func.isRequired,
 };
 
 export default memo(Task);

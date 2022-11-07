@@ -30,6 +30,7 @@ class App extends React.PureComponent {
     this.changeMinutes = this.changeMinutes.bind(this);
     this.addNewTask = this.addNewTask.bind(this);
     this.changeTaskWIP = this.changeTaskWIP.bind(this);
+    this.chrono = this.chrono.bind(this);
   }
 
   addNewTask() {
@@ -101,11 +102,16 @@ class App extends React.PureComponent {
     });
   }
 
-  changeTaskWIP(id) {
+  findTaskById(id) {
     // on trouve element à changer
     const { taskList } = this.state;
-    const task = taskList.find((item) => item.id === id);
+    return taskList.find((item) => item.id === id);
     console.log('recup', task);
+  }
+
+  changeTaskWIP(id) {
+    const { taskList } = this.state;
+    const task = this.findTaskById(id);
 
     // on modifie l'element en question (création d'un toggle)
     // todo attention manque d'une mise à jours des temps qui ont changés.
@@ -123,12 +129,17 @@ class App extends React.PureComponent {
     });
   }
 
+  chrono(id) {
+    
+  }
+
   render() {
     const {
       taskList,
       newTaskLabel,
       newTaskHours,
       newTaskMinutes,
+      chrono,
     } = this.state;
 
     return (
@@ -143,7 +154,7 @@ class App extends React.PureComponent {
           addNewTask={this.addNewTask}
         />
         <Counter list={taskList} />
-        <TaskList list={taskList} changeTaskWIP={this.changeTaskWIP} />
+        <TaskList list={taskList} changeTaskWIP={this.changeTaskWIP} chrono={this.chrono} />
       </div>
     );
   }
