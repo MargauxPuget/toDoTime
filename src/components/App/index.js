@@ -30,7 +30,7 @@ class App extends React.PureComponent {
     this.changeMinutes = this.changeMinutes.bind(this);
     this.addNewTask = this.addNewTask.bind(this);
     this.changeTaskWIP = this.changeTaskWIP.bind(this);
-    this.chrono = this.chrono.bind(this);
+    this.changeTaskTime = this.changeTaskTime.bind(this);
   }
 
   addNewTask() {
@@ -102,21 +102,20 @@ class App extends React.PureComponent {
     });
   }
 
+  // on trouve element à changer
   findTaskById(id) {
-    // on trouve element à changer
     const { taskList } = this.state;
     return taskList.find((item) => item.id === id);
-    console.log('recup', task);
   }
 
   changeTaskWIP(id) {
+    // on trouve element à changer
     const { taskList } = this.state;
     const task = this.findTaskById(id);
 
     // on modifie l'element en question (création d'un toggle)
     // todo attention manque d'une mise à jours des temps qui ont changés.
     task.taskWIP = !task.taskWIP;
-    console.log('recup', task);
 
     // on supprime notre ancien objet, ou plutot on selectionne tous les autres
     const newTaskList = taskList.filter((item) => item.id !== id);
@@ -129,8 +128,24 @@ class App extends React.PureComponent {
     });
   }
 
-  chrono(id) {
-    
+  changeTaskTime(id, value) {
+    // on trouve element à changer
+    const { taskList } = this.state;
+    const task = this.findTaskById(id);
+
+    // on modifie l'element en question
+    task.time = value;
+
+    // on supprime notre ancien objet, ou plutot on selectionne tous les autres
+    const newTaskList = taskList.filter((item) => item.id !== id);
+
+    // on remet l'element modifier dans notre tableau
+    newTaskList.push(task);
+
+    this.setState({
+      taskList: newTaskList,
+    });
+    console.log('mtn', task.id, task.time);
   }
 
   render() {
@@ -139,7 +154,6 @@ class App extends React.PureComponent {
       newTaskLabel,
       newTaskHours,
       newTaskMinutes,
-      chrono,
     } = this.state;
 
     return (
@@ -154,7 +168,11 @@ class App extends React.PureComponent {
           addNewTask={this.addNewTask}
         />
         <Counter list={taskList} />
-        <TaskList list={taskList} changeTaskWIP={this.changeTaskWIP} chrono={this.chrono} />
+        <TaskList
+          list={taskList}
+          changeTaskWIP={this.changeTaskWIP}
+          changeTaskTime={this.changeTaskTime}
+        />
       </div>
     );
   }

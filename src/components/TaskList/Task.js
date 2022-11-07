@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import { memo } from 'react';
+import React, { memo } from 'react';
+
 
 function Task({
   id,
@@ -9,26 +10,45 @@ function Task({
   done,
   taskWIP,
   changeTaskWIP,
-  chrono,
+  changeTaskTime,
 }) {
   // traduction du time en seconde -> en heures, minutes et secondes.
   const heures = Math.trunc(time / 3600);
   const minutes = Math.trunc((time - (heures * 3600)) / 60);
   const secondes = Math.trunc(time % 60);
 
-  // console.log('le composant est rendu !');
+  let interval;
 
-  function handleClick() {
-    console.log('il faudrait démarrer le chrono pour :', id, time);
+  function chrono() {
+    if (time === 0) {
+      clearInterval(interval);
+      return;
+    }
 
+    time -= 1;
+
+    console.log('test', time);
+    changeTaskTime(id, time);
+  }
+
+  function handleClickStart() {
     // démarrage du compte a rebourre
-    //chrono(id);
-    
+    // seulement si il y a du temps
+    if ((time > 0) && (interval === undefined)) {
+      console.log(interval);
+      interval = setInterval(chrono, 1000);
+      console.log(interval);
+      // chrono();
+    }
 
     // modification du status de la tache
     // pour affichage du timer
     changeTaskWIP(id);
-    console.log('taskWIP', taskWIP);
+  }
+
+  function handleClickStop() {
+    console.log (interval);
+    clearInterval(interval);
   }
 
   return (
@@ -38,7 +58,7 @@ function Task({
       <p className="task_description">{description}</p>
       {!done && !taskWIP && (
         <div className="task_button">
-          <span className="task_button_text" onClick={handleClick}>Démarrer !</span>
+          <span className="task_button_text" onClick={handleClickStart}>Démarrer !</span>
           <span className="line -right" />
           <span className="line -top" />
           <span className="line -left" />
@@ -55,7 +75,7 @@ function Task({
             <span className="chrono">75%</span>
           </div>
           <div className="task_button">
-            <span className="task_button_text" onClick={handleClick}>Pause</span>
+            <span className="task_button_text" onClick={handleClickStop}>Pause</span>
             <span className="line -right" />
             <span className="line -top" />
             <span className="line -left" />
@@ -75,7 +95,7 @@ Task.propTypes = {
   done: PropTypes.bool.isRequired,
   taskWIP: PropTypes.bool.isRequired,
   changeTaskWIP: PropTypes.func.isRequired,
-  chrono: PropTypes.func.isRequired,
+  changeTaskTime: PropTypes.func.isRequired,
 };
 
 export default memo(Task);
