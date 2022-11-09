@@ -9,6 +9,7 @@ function TaskList({
   changeTaskWIP,
   changeTaskDone,
   changeTaskTimer,
+  changeTaskInterval,
 }) {
   const arrayOfJSXelements = list.map((item) => (
     <Task
@@ -17,6 +18,7 @@ function TaskList({
       changeTaskWIP={changeTaskWIP}
       changeTaskDone={changeTaskDone}
       changeTaskTimer={changeTaskTimer}
+      changeTaskInterval={changeTaskInterval}
     />
   ));
   const listTryForId = arrayOfJSXelements.sort((a, b) => (a.key - b.key));
@@ -35,6 +37,7 @@ TaskList.propTypes = {
   changeTaskWIP: PropTypes.func.isRequired,
   changeTaskDone: PropTypes.func.isRequired,
   changeTaskTimer: PropTypes.func.isRequired,
+  changeTaskInterval: PropTypes.func.isRequired,
 };
 
 export default TaskList;

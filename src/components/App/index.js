@@ -32,6 +32,7 @@ class App extends React.PureComponent {
     this.changeTaskWIP = this.changeTaskWIP.bind(this);
     this.changeTaskTimer = this.changeTaskTimer.bind(this);
     this.changeTaskDone = this.changeTaskDone.bind(this);
+    this.changeTaskInterval = this.changeTaskInterval.bind(this);
   }
 
   addNewTask() {
@@ -112,6 +113,7 @@ class App extends React.PureComponent {
     return taskList.find((item) => item.id === id);
   }
 
+  // met a jour si la tahce est en cours ou non
   changeTaskWIP(id) {
     // on trouve element à changer
     const { taskList } = this.state;
@@ -132,6 +134,7 @@ class App extends React.PureComponent {
     });
   }
 
+  // met à jour le timer de la tâche
   changeTaskTimer(id, value) {
     // on trouve element à changer
     const { taskList } = this.state;
@@ -151,6 +154,7 @@ class App extends React.PureComponent {
     });
   }
 
+  // met a jour s'il la teche est fini
   changeTaskDone(id) {
     // on trouve element à changer
     const { taskList } = this.state;
@@ -158,6 +162,26 @@ class App extends React.PureComponent {
 
     // on modifie l'element en question
     task.done = true;
+
+    // on supprime notre ancien objet, ou plutot on selectionne tous les autres
+    const newTaskList = taskList.filter((item) => item.id !== id);
+
+    // on remet l'element modifier dans notre tableau
+    newTaskList.push(task);
+
+    this.setState({
+      taskList: newTaskList,
+    });
+  }
+
+  // met à jour l'interval utiliser pour le décompte
+  changeTaskInterval(id, value) {
+    // on trouve element à changer
+    const { taskList } = this.state;
+    const task = this.findTaskById(id);
+
+    // on modifie l'element en question
+    task.interval = value;
 
     // on supprime notre ancien objet, ou plutot on selectionne tous les autres
     const newTaskList = taskList.filter((item) => item.id !== id);
@@ -195,6 +219,7 @@ class App extends React.PureComponent {
           changeTaskWIP={this.changeTaskWIP}
           changeTaskDone={this.changeTaskDone}
           changeTaskTimer={this.changeTaskTimer}
+          changeTaskInterval={this.changeTaskInterval}
         />
       </div>
     );
