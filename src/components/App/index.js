@@ -64,6 +64,7 @@ class App extends React.PureComponent {
       // todo : il faudra un jour pensée à ajouter un text area pour une description potentielle
       description: '',
       done: false,
+      taskWIP: false,
     };
 
     // recuperer la liste existante dans le state et faire une copie de cette liste

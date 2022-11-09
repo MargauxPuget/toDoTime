@@ -17,6 +17,7 @@ function Task({
   const secondes = Math.trunc(time % 60);
 
   let interval;
+  console.log('la', taskWIP);
 
   function chrono() {
     if (time === 0) {
@@ -27,7 +28,6 @@ function Task({
     time -= 1;
 
     console.log('test', time);
-    changeTaskTime(id, time);
   }
 
   function handleClickStart() {
