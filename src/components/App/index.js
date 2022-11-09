@@ -8,7 +8,7 @@ import TaskList from 'src/components/TaskList';
 
 import dataTasksList from 'src/data/tasks';
 
-//  un compsant est re rend u si :
+//  un compsant est re rendu si :
 // - ses props on changé (ici App n'a pas de props)
 // - son state est modifié
 // - son parent est re rendu (ici App n'a pas de parent)
@@ -30,7 +30,8 @@ class App extends React.PureComponent {
     this.changeMinutes = this.changeMinutes.bind(this);
     this.addNewTask = this.addNewTask.bind(this);
     this.changeTaskWIP = this.changeTaskWIP.bind(this);
-    this.changeTaskTime = this.changeTaskTime.bind(this);
+    this.changeTaskTimer = this.changeTaskTimer.bind(this);
+    this.changeTaskDone = this.changeTaskDone.bind(this);
   }
 
   addNewTask() {
@@ -61,6 +62,7 @@ class App extends React.PureComponent {
       label: newTaskLabel,
       // on transforme les heurs et les minutes en secondes
       time: (newTaskHours * 3600) + (newTaskMinutes * 60),
+      timer: (newTaskHours * 3600) + (newTaskMinutes * 60),
       // todo : il faudra un jour pensée à ajouter un text area pour une description potentielle
       chrono: false,
       description: '',
@@ -130,13 +132,13 @@ class App extends React.PureComponent {
     });
   }
 
-  changeTaskTime(id, value) {
+  changeTaskTimer(id, value) {
     // on trouve element à changer
     const { taskList } = this.state;
     const task = this.findTaskById(id);
 
     // on modifie l'element en question
-    task.time = value;
+    task.timer = value;
 
     // on supprime notre ancien objet, ou plutot on selectionne tous les autres
     const newTaskList = taskList.filter((item) => item.id !== id);
@@ -147,7 +149,25 @@ class App extends React.PureComponent {
     this.setState({
       taskList: newTaskList,
     });
-    console.log('mtn', task.id, task.time);
+  }
+
+  changeTaskDone(id) {
+    // on trouve element à changer
+    const { taskList } = this.state;
+    const task = this.findTaskById(id);
+
+    // on modifie l'element en question
+    task.done = true;
+
+    // on supprime notre ancien objet, ou plutot on selectionne tous les autres
+    const newTaskList = taskList.filter((item) => item.id !== id);
+
+    // on remet l'element modifier dans notre tableau
+    newTaskList.push(task);
+
+    this.setState({
+      taskList: newTaskList,
+    });
   }
 
   render() {
@@ -173,7 +193,8 @@ class App extends React.PureComponent {
         <TaskList
           list={taskList}
           changeTaskWIP={this.changeTaskWIP}
-          changeTaskTime={this.changeTaskTime}
+          changeTaskDone={this.changeTaskDone}
+          changeTaskTimer={this.changeTaskTimer}
         />
       </div>
     );

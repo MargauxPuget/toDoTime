@@ -192,17 +192,12 @@
             stroke-dashoffset: 73;
           }
         }
-      }
-    
-      span.chrono{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 2em;
-        font-weight: 500;
-        color: rgb(138, 214, 88);
-      }
+      }  
+    }
+    // Pour le chrono du timer
+    span.chrono{
+      font-weight: 500;
+      color: rgb(93, 163, 46);
     }
   }
 }

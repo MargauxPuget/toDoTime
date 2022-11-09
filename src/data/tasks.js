@@ -3,15 +3,17 @@ export default [
     id: 1,
     label: 'Sortir marcher',
     time: 1000, // un temps en seconde
+    timer: 1000, // un temps en seconde restant
     chrono: false, // false pour arrêter, true pour en cours
     description: "bar de progression (pê en forme d'horloge)" /* TODO :  video a voir 'https://www.youtube.com/watch?v=MdKvSJOWm_U' */,
-    done: false,
+    done: false, // si la focntion est finie
     taskWIP: false,
   },
   {
     id: 13,
     label: 'Coder !!!',
     time: 12318, // un temps en seconde
+    timer: 12318, // un temps en seconde restant
     chrono: false, // false pour arrêter, true pour en cours
     description: "bar de progression (pê en forme d'horloge)",
     done: false,
@@ -21,6 +23,7 @@ export default [
     id: 4,
     label: 'Payer Nounou',
     time: 900, // un temps en seconde
+    timer: 900, // un temps en seconde restant
     chrono: false, // false pour arrêter, true pour en cours
     description: "bar de progression (pê en forme d'horloge)",
     done: true,
@@ -30,6 +33,7 @@ export default [
     id: 8,
     label: 'Prévoir un resto',
     time: 600, // un temps en seconde
+    timer: 600, // un temps en seconde restant
     chrono: false, // false pour arrêter, true pour en cours
     description: 'Toutes les 2 semaines',
     done: true,
@@ -39,6 +43,17 @@ export default [
     id: 10,
     label: 'Prevoir nos prochaine vacance',
     time: 20654, // un temps en seconde
+    timer: 20654, // un temps en seconde restant
+    chrono: false, // false pour arrêter, true pour en cours
+    description: 'Toutes les 3 mois',
+    done: false,
+    taskWIP: false,
+  },
+  {
+    id: 2,
+    label: 'test',
+    time: 3, // un temps en seconde
+    timer: 3, // un temps en seconde restant
     chrono: false, // false pour arrêter, true pour en cours
     description: 'Toutes les 3 mois',
     done: false,

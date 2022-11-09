@@ -5,38 +5,46 @@ function Task({
   id,
   label,
   time,
+  timer,
   description,
   done,
   taskWIP,
   changeTaskWIP,
-  changeTaskTime,
+  changeTaskDone,
+  changeTaskTimer,
 }) {
   // traduction du time en seconde -> en heures, minutes et secondes.
   const heures = Math.trunc(time / 3600);
   const minutes = Math.trunc((time - (heures * 3600)) / 60);
   const secondes = Math.trunc(time % 60);
+  const timerHeures = Math.trunc(timer / 3600);
+  const timerMinutes = Math.trunc((timer - (timerHeures * 3600)) / 60);
+  const timerSecondes = Math.trunc(timer % 60);
 
   let interval;
-  console.log('la', taskWIP);
+
+  function chronoEnd() {
+    changeTaskDone(id);
+  }
 
   function chrono() {
-    if (time === 0) {
+    if (timer === 0) {
       clearInterval(interval);
+
+      chronoEnd();
       return;
     }
 
-    time -= 1;
-
-    console.log('test', time);
+    timer -= 1;
+    changeTaskTimer(id, timer);
+    console.log('test', timer);
   }
 
   function handleClickStart() {
     // démarrage du compte a rebourre
     // seulement si il y a du temps
-    if ((time > 0) && (interval === undefined)) {
-      console.log(interval);
+    if ((timer > 0) && (interval === undefined)) {
       interval = setInterval(chrono, 1000);
-      console.log(interval);
       // chrono();
     }
 
@@ -71,8 +79,8 @@ function Task({
               <circle cx="50px" cy="50px" r="50px" />
               <circle cx="50px" cy="50px" r="50px" />
             </svg>
-            <span className="chrono">75%</span>
           </div>
+          <span className="chrono">{ timerHeures }h, {timerMinutes}min, {timerSecondes}s</span>
           <div className="task_button">
             <span className="task_button_text" onClick={handleClickStop}>Pause</span>
             <span className="line -right" />
@@ -90,11 +98,13 @@ Task.propTypes = {
   id: PropTypes.number.isRequired,
   label: PropTypes.string.isRequired,
   time: PropTypes.number.isRequired,
+  timer: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
   done: PropTypes.bool.isRequired,
   taskWIP: PropTypes.bool.isRequired,
   changeTaskWIP: PropTypes.func.isRequired,
-  changeTaskTime: PropTypes.func.isRequired,
+  changeTaskDone: PropTypes.func.isRequired,
+  changeTaskTimer: PropTypes.func.isRequired,
 };
 
 export default memo(Task);

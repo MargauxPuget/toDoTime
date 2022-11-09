@@ -4,13 +4,19 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 import Task from 'src/components/TaskList/Task';
 
-function TaskList({ list, changeTaskWIP, changeTaskTime }) {
+function TaskList({
+  list,
+  changeTaskWIP,
+  changeTaskDone,
+  changeTaskTimer,
+}) {
   const arrayOfJSXelements = list.map((item) => (
     <Task
       key={item.id}
       {...item}
       changeTaskWIP={changeTaskWIP}
-      changeTaskTime={changeTaskTime}
+      changeTaskDone={changeTaskDone}
+      changeTaskTimer={changeTaskTimer}
     />
   ));
   const listTryForId = arrayOfJSXelements.sort((a, b) => (a.key - b.key));
@@ -27,7 +33,8 @@ TaskList.propTypes = {
     id: PropTypes.number.isRequired,
   })).isRequired,
   changeTaskWIP: PropTypes.func.isRequired,
-  changeTaskTime: PropTypes.func.isRequired,
+  changeTaskDone: PropTypes.func.isRequired,
+  changeTaskTimer: PropTypes.func.isRequired,
 };
 
 export default TaskList;
