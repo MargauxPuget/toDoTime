@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { memo } from 'react';
-
+import { memo } from 'react';
 
 function Task({
   id,
