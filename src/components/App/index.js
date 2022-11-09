@@ -62,6 +62,7 @@ class App extends React.PureComponent {
       // on transforme les heurs et les minutes en secondes
       time: (newTaskHours * 3600) + (newTaskMinutes * 60),
       // todo : il faudra un jour pensée à ajouter un text area pour une description potentielle
+      chrono: false,
       description: '',
       done: false,
       taskWIP: false,
