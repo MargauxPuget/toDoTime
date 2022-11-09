@@ -34,7 +34,6 @@ function Task({
       clearInterval(interval);
       return;
     }
-      console.log('chrono', timer);
 
     timer -= 1;
     changeTaskTimer(id, timer);
@@ -50,7 +49,6 @@ function Task({
 
     // modification du status de la tache
     // pour affichage du timer
-      console.log('chrono', timer);
     changeTaskWIP(id);
   }
 
