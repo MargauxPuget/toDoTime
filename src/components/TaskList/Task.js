@@ -23,6 +23,15 @@ function Task({
   const timerMinutes = Math.trunc((timer - (timerHeures * 3600)) / 60);
   const timerSecondes = Math.trunc(timer % 60);
 
+  // si l'interval existe alors il est différent de -1 et on met intervalExist à true
+  let intervalExist;
+  if (interval === -1) {
+    intervalExist = false;
+  }
+  else {
+    intervalExist = true;
+  }
+
   function chronoEnd() {
     changeTaskDone(id);
     changeTaskInterval(id, -1);
@@ -46,6 +55,7 @@ function Task({
       interval = setInterval(chrono, 1000);
       changeTaskInterval(id, interval);
     }
+    console.log('interval1', interval, taskWIP);
 
     // modification du status de la tache
     // pour affichage du timer
@@ -66,23 +76,28 @@ function Task({
       <p className="task_time">{heures}heures<br />{minutes}minutes<br />{secondes} secondes</p>
       <p className="task_description">{description}</p>
       {!done && !taskWIP && (
-        <div className="task_button">
-          <span className="task_button_text" onClick={handleClickStart}>Démarrer !</span>
-          <span className="line -right" />
-          <span className="line -top" />
-          <span className="line -left" />
-          <span className="line -bottom" />
-        </div>
+        <>
+          {(time !== timer) && (
+            <span className="chrono">il reste encore :<br />{ timerHeures }h, {timerMinutes}min, {timerSecondes}s</span>
+          )}
+          <div className="task_button">
+            <span className="task_button_text" onClick={handleClickStart}>{(time !== timer) ? 'Continuer ...' : 'Démarrer !'}</span>
+            <span className="line -right" />
+            <span className="line -top" />
+            <span className="line -left" />
+            <span className="line -bottom" />
+          </div>
+        </>
       )}
       {!done && taskWIP && (
         <>
-          <div className="box">
+          {/* <div className="box">
             <svg>
               <circle cx="50px" cy="50px" r="50px" />
               <circle cx="50px" cy="50px" r="50px" />
             </svg>
-          </div>
-          <span className="chrono">{ timerHeures }h, {timerMinutes}min, {timerSecondes}s</span>
+          </div> */}
+          <span className="chrono">Reste :<br />{ timerHeures }h, {timerMinutes}min, {timerSecondes}s</span>
           <div className="task_button">
             <span className="task_button_text" onClick={handleClickStop}>Pause</span>
             <span className="line -right" />

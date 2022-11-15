@@ -7,6 +7,7 @@
 
   & .task{
     border: 1px solid rgb(143, 48, 48);
+    border-radius: 8px;
     margin: 0.2rem;
     padding: 0.2rem;
     width: 32%;
@@ -15,8 +16,15 @@
     flex-direction: column;
     justify-content: center;
 
+    &:hover{
+      background-color: rgba(143, 48, 48, 0.2);
+    }
     &--done{
       border: 1px solid rgb(138, 214, 88);
+
+      &:hover{
+        background-color: rgba(138, 214, 88, 0.2);
+      }
     }
 
     & .task_title{
@@ -29,7 +37,22 @@
       color: rgb(48, 40, 40);
     }
 
-    // Pour le bouton dynamique
+    & .task_button {
+      margin: 0.5em auto;
+      border-radius: 10px;
+      border: 1px solid rgba(148, 48, 48, 0.2);
+      background-color: rgba(143, 48, 48, 0.5);
+      
+      &_text{
+        font-weight: 500;
+      padding: 0 1em;
+
+      }
+      &:hover {
+        font-weight: 700;
+      }
+    }
+    /* // Pour le bouton dynamique
     & .task_button {
       padding: 0.5em calc(#{0.5em} * 1.2);
     
@@ -153,7 +176,7 @@
         }
       }
   
-    }
+    } */
     
     // Pour le timer
     .box{
@@ -196,6 +219,7 @@
     }
     // Pour le chrono du timer
     span.chrono{
+      margin-top: 0.5em;
       font-weight: 500;
       color: rgb(93, 163, 46);
     }

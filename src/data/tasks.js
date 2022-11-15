@@ -57,8 +57,8 @@ export default [
   {
     id: 2,
     label: 'test',
-    time: 15, // un temps en seconde
-    timer: 15, // un temps en seconde restant
+    time: 3, // un temps en seconde
+    timer: 3, // un temps en seconde restant
     chrono: false, // false pour arrêter, true pour en cours
     interval: -1,
     description: 'Toutes les 3 mois',
