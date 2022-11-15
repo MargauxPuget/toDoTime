@@ -6,7 +6,7 @@ export default [
     timer: 1000, // un temps en seconde restant
     chrono: false, // false pour arrêter, true pour en cours
     interval: -1, // stockage de l'existance d'un interval (-1, s'il n'existe pas)
-    description: "bar de progression (pê en forme d'horloge)" /* TODO :  video a voir 'https://www.youtube.com/watch?v=MdKvSJOWm_U' */,
+    description: '', /* TODO :  video a voir 'https://www.youtube.com/watch?v=MdKvSJOWm_U' */
     done: false, // si la focntion est finie
     taskWIP: false,
   },
@@ -17,7 +17,7 @@ export default [
     timer: 12318, // un temps en seconde restant
     chrono: false, // false pour arrêter, true pour en cours
     interval: -1,
-    description: "bar de progression (pê en forme d'horloge)",
+    description: '',
     done: false,
     taskWIP: false,
   },
@@ -28,7 +28,7 @@ export default [
     timer: 900, // un temps en seconde restant
     chrono: false, // false pour arrêter, true pour en cours
     interval: -1,
-    description: "bar de progression (pê en forme d'horloge)",
+    description: '',
     done: true,
     taskWIP: false,
   },
