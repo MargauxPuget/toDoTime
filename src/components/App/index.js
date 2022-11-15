@@ -66,6 +66,7 @@ class App extends React.PureComponent {
       timer: (newTaskHours * 3600) + (newTaskMinutes * 60),
       // todo : il faudra un jour pensée à ajouter un text area pour une description potentielle
       chrono: false,
+      interval: -1,
       description: '',
       done: false,
       taskWIP: false,
